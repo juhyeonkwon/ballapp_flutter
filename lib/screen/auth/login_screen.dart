@@ -1,4 +1,5 @@
 
+import 'package:ballapp/screen/auth/widgets/kakao_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
@@ -31,17 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: (){ kakaoLogin().then((result) {
-                  getToken();
-                  Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) => BottomNavigation(),
-                  ));
-                } ); },
-                child: const Text(
-                  "카카오 로그인", style: TextStyle(
-                color: Colors.white,
-              ),), ),
+              const KakaoLoginWidget(),
               ElevatedButton(
                 onPressed: (){ naverLogin();
                   Navigator.pushReplacement(context, MaterialPageRoute(
