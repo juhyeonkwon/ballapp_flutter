@@ -1,3 +1,4 @@
+import 'package:ballapp/screen/main/widgets/main_widget_1.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,27 +11,54 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+
   String token = "";
+
+  @override
+  void initState() {
+    super.initState();
+
+    print("왜호출이안되나요");
+
+    setState(() {
+      getToken().then((result) {
+        print("여기로 안오나요");
+
+        token = result;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar( title : Text("App bar")),
-        body: SizedBox(
-          width: 50, height: 50,
-          child: Text(token),
+        appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: (){},
+            ),
+            title : Text("App bar")),
+        body: Container(
+          child: Column(
+            children: [
+              SizedBox(
+                width: 50, height: 50,
+                child: Text(token),
+              ),
+              Row(
+                children: [
+                  LaundryBox(),
+                  LaundryBox(),
+                ],
+              ),
+
+            ],
+          ),
         )
       )
     );
-  }
-
-  @override
-  void initState() {
-    setState(() {
-      getToken().then((result) {
-        token = result;
-      });
-    });
   }
 
   Future<String> getToken() async {

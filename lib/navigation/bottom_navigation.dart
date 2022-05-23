@@ -1,3 +1,4 @@
+import 'package:ballapp/screen/favorite/favorite_screen.dart';
 import 'package:flutter/material.dart';
 import '../screen/main/main_screen.dart';
 
@@ -14,7 +15,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     MainScreen(),
-    FuckingWidget2(),
+    FavoriteScreen(),
     MainScreen(),
     FuckingWidget(),
     FuckingWidget(),
@@ -23,6 +24,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   void _onItemTapped(int index) {
     setState(() {
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => _widgetOptions.elementAt(_selectedIndex)),
+      // );
       _selectedIndex = index;
     });
   }
@@ -30,10 +35,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),

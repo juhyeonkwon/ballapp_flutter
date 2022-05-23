@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ballapp/navigation/main_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'auth/login_screen.dart';
@@ -47,14 +48,14 @@ class _SplashState extends State<Splash> {
       getToken().then((token)  {
         if(token == "") {
           print("로그인 안되어있슴");
-            Navigator.push(context, MaterialPageRoute(
+            Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (context) => LoginScreen()
             )
         );
       } else {
           print("${token} 로그인 되어잇슴");
-        Navigator.push(context, MaterialPageRoute(
-        builder: (context) => BottomNavigation()
+        Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (context) => MainNavigation()
         )
         );
         }
