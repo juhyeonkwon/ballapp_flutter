@@ -1,3 +1,4 @@
+import 'package:ballapp/screen/learn.dart';
 import 'package:flutter/material.dart';
 import 'navigation/bottom_navigation.dart';
 import 'navigation/main_navigation.dart';
@@ -13,16 +14,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
-
+  static const String _title = 'Balapp';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: _title,
-      home: Scaffold(
-        body: Splash(),
-      ),
+    return MaterialApp(
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: child!,
+          );
+        },
+        debugShowCheckedModeBanner: false,
+        title: _title,
+      home: Splash()
     );
   }
 }

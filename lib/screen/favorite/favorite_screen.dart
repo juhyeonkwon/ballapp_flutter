@@ -8,9 +8,17 @@ class FavoriteScreen extends StatefulWidget {
   State<FavoriteScreen> createState() => _FavoriteScreenState();
 }
 
-class _FavoriteScreenState extends State<FavoriteScreen> {
+class _FavoriteScreenState extends State<FavoriteScreen> with AutomaticKeepAliveClientMixin<FavoriteScreen> {
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar( title : Text("Favority")),
@@ -21,4 +29,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         )
     );
   }
+
+
 }

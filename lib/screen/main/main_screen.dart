@@ -1,30 +1,33 @@
 import 'package:ballapp/screen/main/widgets/main_widget_1.dart';
+import 'package:ballapp/screen/main/widgets/widget2.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'widgets/main_appbar.dart';
+import 'widgets/search_box.dart';
+
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+
+  const MainScreen({Key? key }) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with AutomaticKeepAliveClientMixin<MainScreen> {
 
-
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
   String token = "";
 
   @override
   void initState() {
     super.initState();
 
-    print("왜호출이안되나요");
-
     setState(() {
       getToken().then((result) {
-        print("여기로 안오나요");
-
         token = result;
       });
     });
@@ -34,23 +37,29 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: (){},
-            ),
-            title : Text("App bar")),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+              centerTitle: true,
+              elevation : 0.0,
+              leading: IconButton(
+                alignment : Alignment.centerLeft,
+                padding: EdgeInsets.all(8.0),
+                icon: Icon(Icons.menu),
+                onPressed: (){},
+              ),
+              title : MainAppbarWidget(),
+          )
+        ),
         body: Container(
           child: Column(
             children: [
-              SizedBox(
-                width: 50, height: 50,
-                child: Text(token),
-              ),
+              MainSearchBoxWidget(),
               Row(
                 children: [
                   LaundryBox(),
                   LaundryBox(),
+                  LaundryBox2(),
                 ],
               ),
 

@@ -2,8 +2,8 @@ import 'package:ballapp/navigation/main_navigation.dart';
 import 'package:ballapp/screen/main/list/laundry_screen.dart';
 import 'package:flutter/material.dart';
 
-class LaundryBox extends StatelessWidget {
-  const LaundryBox({Key? key}) : super(key: key);
+class LaundryBox2 extends StatelessWidget {
+  const LaundryBox2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +14,19 @@ class LaundryBox extends StatelessWidget {
       width: width,
       height: height,
       child: ElevatedButton(
-        child: Text("세탁"),
+        child: Text("세탁2"),
         onPressed: (){
           // mainKey.currentState?.pushNamed('/main/list');
-          mainKey.currentState?.push(
-          PageRouteBuilder(
-            pageBuilder: (c, a1, a2) => LaundryList(),
-            transitionsBuilder: slide,
-            transitionDuration: const Duration(milliseconds: 150),
-            reverseTransitionDuration: const Duration(milliseconds: 150),
-          ));
+          Navigator.push(context,
+              PageRouteBuilder(
+                pageBuilder: (c, a1, a2) => LaundryList(),
+                transitionsBuilder: slide,
+                transitionDuration: const Duration(milliseconds: 150),
+                reverseTransitionDuration: const Duration(milliseconds: 150),
+              ));
         },
       ),
-      );
+    );
   }
 
   void navi() {}

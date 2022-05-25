@@ -21,6 +21,7 @@ class _LaundryListState extends State<LaundryList> {
       appBar: AppBar(
         foregroundColor: Colors.black26,
         backgroundColor: Colors.white,
+        title: Text("list"),
       ),
       body: ElevatedButton(
         child: Text("버튼"),
