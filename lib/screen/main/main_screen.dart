@@ -42,12 +42,14 @@ class _MainScreenState extends State<MainScreen> with AutomaticKeepAliveClientMi
           child: AppBar(
               centerTitle: true,
               elevation : 0.0,
-              leading: IconButton(
-                alignment : Alignment.centerLeft,
-                padding: EdgeInsets.all(8.0),
-                icon: Icon(Icons.menu),
-                onPressed: (){},
-              ),
+              // leading: IconButton(
+              //   alignment : Alignment.centerLeft,
+              //   padding: EdgeInsets.all(8.0),
+              //   icon: Icon(Icons.menu),
+              //   onPressed: (){},
+              // ),
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
               title : MainAppbarWidget(),
           )
         ),

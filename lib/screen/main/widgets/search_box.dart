@@ -1,4 +1,7 @@
+import 'package:ballapp/navigation/main_navigation.dart';
 import 'package:flutter/material.dart';
+
+import '../search/main_search_screen.dart';
 
 class MainSearchBoxWidget extends StatefulWidget {
   const MainSearchBoxWidget({Key? key}) : super(key: key);
@@ -20,7 +23,15 @@ class _MainSearchBoxWidgetState extends State<MainSearchBoxWidget> {
         child: Container(
           height: 35.0,
           child: TextButton(
-            onPressed: (){},
+            onPressed: (){
+              mainKey.currentState?.push(
+                  PageRouteBuilder(
+                    pageBuilder: (c, a1, a2) => MainSearchScreen(),
+                    transitionsBuilder: slide,
+                    transitionDuration: const Duration(milliseconds: 150),
+                    reverseTransitionDuration: const Duration(milliseconds: 150),
+                  ));
+              },
             style: TextButton.styleFrom(
               backgroundColor: Colors.white,
               shape: const RoundedRectangleBorder(
@@ -29,7 +40,7 @@ class _MainSearchBoxWidgetState extends State<MainSearchBoxWidget> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.search, color: Colors.black38, size: 20.0,),
+                Icon(Icons.search, color: Colors.black38, size: 22.0, ),
                 Text("동네 주변 검색", style: TextStyle(color: Colors.black38, fontSize: 14.0))
               ],
             ),

@@ -2,6 +2,8 @@ import 'package:ballapp/screen/main/list/laundry_specify.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../navigation/main_navigation.dart';
+
 class LaundryList extends StatefulWidget {
   const LaundryList({Key? key}) : super(key: key);
 
@@ -18,10 +20,25 @@ class _LaundryListState extends State<LaundryList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.black26,
-        backgroundColor: Colors.white,
-        title: Text("list"),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+            automaticallyImplyLeading : false,
+            leadingWidth: 34, // <-- Use this
+            titleSpacing: 0,
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              alignment : Alignment.centerLeft,
+              padding: EdgeInsets.only(left : 8.0),
+              icon: Icon(Icons.arrow_back, size: 24, color: Colors.black38,),
+              onPressed: (){
+                mainKey.currentState?.pop();
+              },
+            ),
+            centerTitle: false,
+            elevation : 0.0,
+          )
       ),
       body: ElevatedButton(
         child: Text("버튼"),
@@ -32,7 +49,6 @@ class _LaundryListState extends State<LaundryList> {
           );
         },
       ),
-      bottomNavigationBar: Text("dtd"),
     );
 
   }
